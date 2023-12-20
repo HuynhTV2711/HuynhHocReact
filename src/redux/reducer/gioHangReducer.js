@@ -1,38 +1,48 @@
+import {produce} from 'immer';
+import {THEM_SAN_PHAM, XOA, UPDATE_QUANTITY} from './../types/gioHangTypes'
 const stateGioHang = {
-  gioHang: [
-    {
-      id: 1,
-      name: "Adidas Prophere",
-      alias: "adidas-prophere",
-      price: 350,
-      description:
-        "The adidas Primeknit upper wraps the foot with a supportive fit that enhances movement.\r\n\r\n",
-      shortDescription:
-        "The midsole contains 20% more Boost for an amplified Boost feeling.\r\n\r\n",
-      quantity: 1,
-      image: "http://svcy3.myclass.vn/images/adidas-prophere.png",
-    },
-  ], //Giá trị mặc định ban đầu của giỏi hàng
+  gioHang: [], //Giá trị mặc định ban đầu của giỏi hàng
 };
 
 export const GioHangReducer = (state = stateGioHang, action) => {
+  return produce(state, draftState => {
   switch (action.type) {
-    case "THEM_SAN_PHAM":
-      let newGioHang = [...state.gioHang];
-      // console.log(newGioHang);
-      // console.log(action);
-      let index = newGioHang.findIndex((item, index) => {
+    case THEM_SAN_PHAM:{
+      let index = state.gioHang.findIndex((item, index)=>{
         return item.id === action.payload.id;
-      });
-      console.log(index);
+      })
       if (index !== -1) {
-        newGioHang[index].quantity += 1;
+        draftState.gioHang[index].quantity += 1;
       } else {
-        newGioHang.push(action.payload)
+        draftState.gioHang.push(action.payload)
       }
-      state.gioHang = newGioHang;
-      return {...state};
+      break};
+      case XOA:{
+        let index = state.gioHang.findIndex((item, index)=>{
+          return item.id === action.payload.id;
+        })
+        if (index !== -1) {
+          draftState.gioHang.splice(index, 1);
+        }
+        break
+      };
+      case UPDATE_QUANTITY:{
+        console.log(action);
+        let index = state.gioHang.findIndex((item, index)=>{
+          return item.id === action.payload;
+        })
+        if (action.tangGiam == true) {
+          draftState.gioHang[index].quantity += 1;
+        }else{
+          if (draftState.gioHang[index].quantity > 1) {
+            draftState.gioHang[index].quantity -= 1;
+          }
+        }
+        break
+      }
+        
     default:
-      return { ...state };
+      return state
   }
+});
 };

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import dataGiay from './../../data/dataGiay'
 import { connect } from 'react-redux'
+import { themSanPham } from '../../../redux/actions/gioHangActions'
 
  class SanPhamRedux extends Component {
     renderSanPham = ()=>{
@@ -21,13 +22,11 @@ import { connect } from 'react-redux'
     )
   }
 }
+
 const mapDispatchToProps = (dispatch)=>{
    return   {
     themSanPham:(sanPham)=>{
-        dispatch({
-            type: "THEM_SAN_PHAM",
-            payload: sanPham
-        })
+        dispatch(themSanPham(sanPham))
     }
    }
 }
