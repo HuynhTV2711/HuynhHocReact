@@ -3,7 +3,6 @@ import {THEM_SAN_PHAM, XOA, UPDATE_QUANTITY} from './../types/gioHangTypes'
 const stateGioHang = {
   gioHang: [], //Giá trị mặc định ban đầu của giỏi hàng
 };
-
 export const GioHangReducer = (state = stateGioHang, action) => {
   return produce(state, draftState => {
   switch (action.type) {
@@ -31,7 +30,7 @@ export const GioHangReducer = (state = stateGioHang, action) => {
         let index = state.gioHang.findIndex((item, index)=>{
           return item.id === action.payload;
         })
-        if (action.tangGiam == true) {
+        if (action.tangGiam === true) {
           draftState.gioHang[index].quantity += 1;
         }else{
           if (draftState.gioHang[index].quantity > 1) {
@@ -40,7 +39,6 @@ export const GioHangReducer = (state = stateGioHang, action) => {
         }
         break
       }
-        
     default:
       return state
   }
