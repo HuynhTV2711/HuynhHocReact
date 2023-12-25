@@ -15,7 +15,9 @@ root.render(
   //     </BrowserRouter>
   //   </Provider>
   // Demo Function component react-route=dom thêm  thẻ BrowserRouter bao toàn bộ App và import
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );

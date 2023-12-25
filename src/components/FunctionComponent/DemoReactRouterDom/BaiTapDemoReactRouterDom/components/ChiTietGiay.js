@@ -15,7 +15,7 @@ const ChiTietGiay = () => {
         })
         promise
             .then((result) => {
-                setDetail(result.data.content)
+                    setDetail(result.data.content)
             }).catch((err) => {
                 console.log(err);
             });

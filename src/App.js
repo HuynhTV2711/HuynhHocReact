@@ -19,12 +19,10 @@ import Template from "./components/FunctionComponent/DemoReactRouterDom/BaiTapDe
 import IndexPage from "./components/FunctionComponent/DemoReactRouterDom/BaiTapDemoReactRouterDom/components/IndexPage";
 import ChiTietGiay from "./components/FunctionComponent/DemoReactRouterDom/BaiTapDemoReactRouterDom/components/ChiTietGiay";
 import Page404 from "./components/FunctionComponent/DemoReactRouterDom/BaiTapDemoReactRouterDom/components/Page404";
-
-
+import BaiTapFormik from "./components/FunctionComponent/BaiTapFormik/BaiTapFormik";
 
 function App() {
   return (
-
     //     {/* Các Component đang sử dụng bootstrap dùng class component */}
     //  {/* <div className="App ">*/}
     //   {/* <BaiTapComponent/> */}
@@ -53,7 +51,6 @@ function App() {
     //   {/* <FormLogin/> */}
     //   // </div>
 
-
     // ***************************************************************************
     //   {/* Các component sử dụng tailwind CSS dùng function component*/}
     //   {/* Demo function component, useState, props trong rafce  */}
@@ -70,7 +67,7 @@ function App() {
     // </>
 
     // *************************************************
-    // Demo teplate header, footer, NavLink, active tab,
+    // Demo teplate header, footer, NavLink, active tab,, useEffect, useLocation, useParams, Link, 404page
     <>
       <Routes>
         <Route element={<Template/>} path="/">
@@ -82,16 +79,15 @@ function App() {
         {/* trong chi tiet giay có userParams để lấy params, trong useLocation trả về tất cả các url phía sau localhost:3000, thẻ LINK(khi lick vô thì chuyển hướng), và useNavigate để chuyển hướng người dùng đến 1 trang web sau khi xử lí(có thể ứng dụng cho đăng nhập thành công chuyển thẳng về trang chủ) */}
         {/* trong ChiTietGiay dùng userEffect để chạy didMoun và didUpdate bằng cách thay đổi giá trị vào [] */}
         <Route element={<ChiTietGiay/>} path="detail/:id"/>
+        {/* trong BaiTapFormik: formik, yup, redux toolkit, useSelector, useDispatch */}
+        <Route element={<BaiTapFormik/>} path="form"></Route>
         </Route>
         {/* route kiểm tra page not Found */}
         <Route element={<Page404/>} path="*"></Route>
       </Routes>
     </>
-
   );
 }
 
 export default App;
 
-
-// 2:18

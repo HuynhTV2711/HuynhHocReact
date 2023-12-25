@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {GioHangReducer} from './reducer/gioHangReducer'
+import userSlice from './slice/userSlice'
 export const store = configureStore({
   reducer: {
     // demo ve luu tru du lieu tren store
@@ -17,5 +18,6 @@ export const store = configureStore({
       return "Van Huynh";
     },
     GioHangReducer,
+    userSlice,
   },
 });

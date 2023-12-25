@@ -58,12 +58,12 @@ const Header = () => {
             ListGiay
           </NavLink>
           <NavLink
-            to={"/"}
+            to={"/form"}
             className={({isActive, isPending})=>{
               return isActive ? "text-red-500 text-sm font-semibold leading-6" : "text-sm font-semibold leading-6 text-gray-900"
             }}
           >
-            Tin tức
+            Formik-yup
           </NavLink>
           <NavLink
             to={"/"}
